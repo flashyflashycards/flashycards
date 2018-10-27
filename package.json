@@ -11,11 +11,11 @@
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'flashy-app/*'\" \"npm run flashy-app\"",
-    "flashy-app": "cd flashy-app && npm run start",
+    "start:dev": "concurrently \"nodemon --ignore 'client*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
     "seed": "node scripts/seedDB.js",
-    "install": "cd flashy-app && yarn install",
-    "build": "cd flashy-app && npm run build",
+    "install": "cd client && yarn install",
+    "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
   "author": "",
