@@ -1,0 +1,33 @@
+{
+  "name": "mern",
+  "version": "1.0.0",
+  "proxy": "http://localhost:3001",
+  "description": "",
+  "engines": {
+    "node": "8.11.3",
+    "yarn": "1.10.1"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'flashy-app/*'\" \"npm run flashy-app\"",
+    "flashy-app": "cd flashy-app && npm run start",
+    "seed": "node scripts/seedDB.js",
+    "install": "cd flashy-app && yarn install",
+    "build": "cd flashy-app && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.17",
+    "if-env": "^1.0.4"
+  }
+}
