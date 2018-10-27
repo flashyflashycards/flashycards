@@ -3,10 +3,20 @@ const Schema = mongoose.Schema;
 // const validators = require("validators");
 
 const userSchema = new Schema({
-  firstName: { type: String, required: true},
-  lastName: { type: String, required: true},
-  username: { type: String, unique: true, required: true},
-  password: { type: String, required: true},
+  firstName: { type: String, required: "First Name required"},
+  lastName: { type: String, required: "Last Name required"},
+  username: { type: String, unique: true, required: "Username required"},
+  password: { type: String, required: true,
+    validate: [
+      // Function takes in the new `longstring` value to be saved as an argument
+      function(input) {
+        // If this returns true, proceed. If not, return the error message below
+        return input.length >= 6;
+      },
+      // Error Message
+      "Password should be longer."
+    ]
+},
   decks: [
     {
       // Store ObjectIds in the array

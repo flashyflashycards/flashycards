@@ -11,21 +11,21 @@ import API from "../utils/API";
 class App extends Component {
 
   saveUser = i => {
-    alert ("User added");
+    
     API.saveUser(  {
-      firstName: "Jesus",
-      lastName: "Qdsadsen",
+      firstName: "work",
+      lastName: "wont",
       username:
-        "dasdxdaso", 
-      password: "cxzcxz"
+        "Johnw", 
+      password: "cxxxxxz"
     })
-      .then(res => console.log("Added user"))
-      .catch(err => console.log(err));
+      .then(res => alert("Added user"))
+      .catch(err => alert("You need a longer password"));
   
   };
 
   saveCard = i => {
-    alert ("Card added");
+
     API.saveCard(  {
       question: "Who are you",
       answer: "Billy",
@@ -33,18 +33,18 @@ class App extends Component {
       thumbsDown: "2",
       comments: "Yeah, easy question"
     })
-      .then(res => console.log("Added card"))
+      .then(res =>  alert("Added card"))
       .catch(err => console.log(err));
   
   }
 
   saveDeck = i => {
-    alert ("Deck added");
+
     API.saveDeck(  {
       name: "An example of making a deck with cards in it already (uncomment below)"
       // cards: "5bd3b885d6b6acc708b9c6f2"
     })
-      .then(res => console.log("Added deck"))
+      .then(res => alert("Added deck"))
       .catch(err => console.log(err));
   } 
 
