@@ -5,6 +5,9 @@ import NavigationBar from '../components/NavigationBar';
 import './App.css';
 import SaveBtn from "../components/SaveBtn";
 import API from "../utils/API";
+import './styles/foundation.min.css';
+import './styles/App.css';
+import HomePage from '../pages/HomePage';
 
 
 
@@ -51,14 +54,23 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavigationBar />`
+
+        <HomePage />
+        {/* <NavigationBar />`
 
         <SaveBtn style={{border:'solid 1px red'}} word={"Add an user!"} onClick={(i) => this.saveUser(i)} />
         <SaveBtn style={{border:'solid 1px green'}} word={"Add a deck!"} onClick={(i) => this.saveDeck(i)} />
-        <SaveBtn style={{border:'solid 1px blue'}} word={"Add a card!"} onClick={(i) => this.saveCard(i)} />
+        <SaveBtn style={{border:'solid 1px blue'}} word={"Add a card!"} onClick={(i) => this.saveCard(i)} /> */}
 
       </div>
     );
+
+
+class App extends Component {
+  render() {
+    return <div className="app">
+      <HomePage />
+    </div>;
   }
 }
 

@@ -5,11 +5,14 @@
   "proxy": "http://localhost:3001/",
   "engines": "8.11.3",
   "dependencies": {
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-scripts": "1.0.14",
     "react-router-dom": "^4.1.2",
-    "axios": "^0.16.2"
+    "axios": "^0.16.2",
+    "@material-ui/core": "^3.3.1",
+    "@material-ui/icons": "^3.0.1",
+    "node-sass": "^4.9.4",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "react-scripts": "2.0.5"
   },
   "scripts": {
     "start": "react-scripts start",
