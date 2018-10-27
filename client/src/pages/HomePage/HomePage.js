@@ -16,6 +16,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import Navigation from '../../components/Navigation';
 import FlashCard from '../../components/FlashCard';
+import API from '../../utils/API.js'
 
 const drawerWidth = 240;
 
@@ -54,9 +55,14 @@ const styles = theme => ({
 export default class HomePage extends React.Component {
   state = {
     mobileOpen: false,
-    likedCards: []
+    likedCards: [],
+    cards: []
   };
 
+  componentDidMount() {
+    this.loadCards();
+
+  }
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
@@ -69,17 +75,27 @@ export default class HomePage extends React.Component {
       this.setState({ likedCards: likedCards.concat(i) });
     }
   }
+  
+  
+  loadCards = () => {
+    API.getCards()
+      .then(res =>
+        this.setState({ cards: res.data}), console.log("Cards added")
+      )
+      .catch(err => console.log(err));
+  };
 
   render() {
     const { likedCards, mobileOpen } = this.state;
-    const cards = [
-      { title: 'Lorem ipsum dolor sit amet', question: 'Fusce venenatis varius lorem nec rutrum. Etiam condimentum dui eget tortor porttitor, eu egestas ligula dictum. Quisque a tellus eget dolor rutrum suscipit. Sed nisl massa, congue sit amet elit vel, fringilla interdum felis.', date: new Date().toLocaleDateString('en-CA') },
-      { title: 'Lorem ipsum dolor sit amet', question: 'Fusce venenatis varius lorem nec rutrum. Etiam condimentum dui eget tortor porttitor, eu egestas ligula dictum. Quisque a tellus eget dolor rutrum suscipit. Sed nisl massa, congue sit amet elit vel, fringilla interdum felis.', date: new Date().toLocaleDateString('en-CA') },
-      { title: 'Lorem ipsum dolor sit amet', question: 'Fusce venenatis varius lorem nec rutrum. Etiam condimentum dui eget tortor porttitor, eu egestas ligula dictum. Quisque a tellus eget dolor rutrum suscipit. Sed nisl massa, congue sit amet elit vel, fringilla interdum felis.', date: new Date().toLocaleDateString('en-CA') },
-    ];
+   
+    // const cards = [
+    //   { title: 'Lorem ipsum dolor sit amet', question: 'Fusce venenatis varius lorem nec rutrum. Etiam condimentum dui eget tortor porttitor, eu egestas ligula dictum. Quisque a tellus eget dolor rutrum suscipit. Sed nisl massa, congue sit amet elit vel, fringilla interdum felis.', date: new Date().toLocaleDateString('en-CA') },
+    //   { title: 'Lorem ipsum dolor sit amet', question: 'Fusce venenatis varius lorem nec rutrum. Etiam condimentum dui eget tortor porttitor, eu egestas ligula dictum. Quisque a tellus eget dolor rutrum suscipit. Sed nisl massa, congue sit amet elit vel, fringilla interdum felis.', date: new Date().toLocaleDateString('en-CA') },
+    //   { title: 'Lorem ipsum dolor sit amet', question: 'Fusce venenatis varius lorem nec rutrum. Etiam condimentum dui eget tortor porttitor, eu egestas ligula dictum. Quisque a tellus eget dolor rutrum suscipit. Sed nisl massa, congue sit amet elit vel, fringilla interdum felis.', date: new Date().toLocaleDateString('en-CA') },
+    // ];
     return <Navigation mobileOpen={mobileOpen} onDrawerToggle={this.handleDrawerToggle} container={this.props.container}>
       <div className="row">
-        {cards.map((c, i) => <div className="column medium-4 small-12">
+        {this.state.cards.map((c, i) => <div className="column medium-4 small-12">
           <FlashCard key={i} {...c} liked={likedCards.includes(i)} onLike={() => this.likeCard(i)} />
         </div>)}
       </div>

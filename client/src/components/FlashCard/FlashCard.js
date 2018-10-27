@@ -19,14 +19,14 @@ const StyledIconButton = withStyles({
 
 export default class FlashCard extends PureComponent {
   render() {
-    const { title, question, date, liked, onLike } = this.props;
+    const { question, answer, date, liked, onLike, thumbsUp, thumbsDown } = this.props;
     return <div className="flashCard">
       <div className="flashCard__upper">
         <div className="flashCard__title">
-          {title}
+          {question}
         </div>
         <div className="flashCard__question">
-          {question}
+          {answer}
         </div>
       </div>
       <div className="flashCard__lower">
@@ -37,6 +37,7 @@ export default class FlashCard extends PureComponent {
           <div className="column shrink">
             <button type="button" className={`flashCard__button ${liked ? 'flashCard__button--active' : ''}`} onClick={() => onLike()}>
               <LikeIcon />
+              {thumbsUp}
             </button >
           </div>
           <div className="column shrink">

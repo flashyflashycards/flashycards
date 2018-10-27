@@ -6,22 +6,34 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
+import API from '../../../utils/API.js'
 
 export default class EditButton extends PureComponent {
   state = {
     open: false,
-    title: '',
-    question: ''
+    question: '',
+    answer: ''
+  }
+
+  onAddCard= () => {
+    API.saveCard({
+      question: this.state.question,
+      answer: this.state.answer,
+      thumbsUp: '0',
+      thumbsDown: '0'
+    })
+      .then(res => alert('Added card'), window.location.reload())
+      .catch(err => console.log(err))
   }
 
   submit = () => {
-    const { title, question } = this.state;
-
-    this.props.onAddCard({ title, question });
+    const { question, answer } = this.state;
+    this.onAddCard({ question, answer });
+    // this.props.onAddCard({ question, answer });
   }
 
   render() {
-    const { open, title, question } = this.state;
+    const { open, title, question, answer } = this.state;
 
     return <React.Fragment>
       <button type="button" className="app-navigation__edit" onClick={() => this.setState({ open: true })}>
@@ -35,25 +47,25 @@ export default class EditButton extends PureComponent {
           <TextField
             autoFocus
             margin="dense"
-            id="title"
-            label="Title"
-            type="text"
-            value={title}
-            onChange={e => this.setState({ title: e.target.value })}
-            fullWidth
-          />
-          <TextField
             id="question"
-            label="Question"
+            label="question"
             type="text"
             value={question}
             onChange={e => this.setState({ question: e.target.value })}
             fullWidth
           />
+          <TextField
+            id="answer"
+            label="answer"
+            type="text"
+            value={answer}
+            onChange={e => this.setState({ answer: e.target.value })}
+            fullWidth
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={this.submit} color="primary">
-            Add
+            Add card
             </Button>
         </DialogActions>
       </Dialog>
