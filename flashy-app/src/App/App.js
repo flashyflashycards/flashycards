@@ -66,12 +66,4 @@ class App extends Component {
     );
 
 
-class App extends Component {
-  render() {
-    return <div className="app">
-      <HomePage />
-    </div>;
-  }
-}
-
 export default App;
