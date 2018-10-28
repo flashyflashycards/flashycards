@@ -17,6 +17,9 @@ export default {
   saveCard: function(cardData) {
     return axios.post("/api/cards", cardData);
   },
+  addLikes: function(id, cardData){
+    return axios.put("/api/cards/" + id, cardData)
+  },
   getUsers: function() {
     return axios.get("/api/users");
   },
