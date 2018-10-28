@@ -76,6 +76,7 @@ export default class HomePage extends React.Component {
     }
     // API.addLikes(i)
     API.addLikes(this.state.cards[i]._id, {thumbsUp: this.state.cards[i].thumbsUp+1});
+    this.loadCards();
   }
   
   
