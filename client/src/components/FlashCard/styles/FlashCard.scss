@@ -1,5 +1,6 @@
 .flashCard {
     background-color: #ffffff;
+    margin-bottom: 1.5rem;
     
     &__upper {
         padding: 1.5rem 1.5rem 2.5rem 1.5rem;
@@ -26,7 +27,7 @@
     }
     &__question {
         font-family: 'Work Sans', sans-serif;
-        font-size: 16.9px;
+        font-size: 16px;
         font-weight: normal;
         font-style: normal;
         font-stretch: normal;
@@ -36,7 +37,7 @@
     }
     &__date {
         font-family: 'Work Sans', sans-serif;
-        font-size: 16.9px;
+        font-size: 16px;
         font-weight: normal;
         font-style: normal;
         font-stretch: normal;
