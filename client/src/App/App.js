@@ -7,6 +7,8 @@ import API from '../utils/API.js'
 import './styles/foundation.min.css'
 import './styles/App.css'
 import HomePage from '../pages/HomePage'
+import LandingPage from '../pages/LandingPage';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 export default class App extends Component {
   saveUser = i => {
@@ -41,18 +43,28 @@ export default class App extends Component {
       .catch(err => console.log(err))
   }
 
-  render () {
-    return (
-      <div className='App'>
+  render () 
+  // {
+  //   return (
+  //     <div className='App'>
 
-        <HomePage />
-        {/* <NavigationBar />`
+  //       <HomePage />
+  //       {/* <NavigationBar />`
 
-        <SaveBtn style={{border:'solid 1px red'}} word={"Add an user!"} onClick={(i) => this.saveUser(i)} />
-        <SaveBtn style={{border:'solid 1px green'}} word={"Add a deck!"} onClick={(i) => this.saveDeck(i)} />
-        <SaveBtn style={{border:'solid 1px blue'}} word={"Add a card!"} onClick={(i) => this.saveCard(i)} /> */}
+  //       <SaveBtn style={{border:'solid 1px red'}} word={"Add an user!"} onClick={(i) => this.saveUser(i)} />
+  //       <SaveBtn style={{border:'solid 1px green'}} word={"Add a deck!"} onClick={(i) => this.saveDeck(i)} />
+  //       <SaveBtn style={{border:'solid 1px blue'}} word={"Add a card!"} onClick={(i) => this.saveCard(i)} /> */}
 
+  //     </div>
+  //   )
+  // }
+
+  {
+    return <Router>
+      <div className="app">
+        <Route path="/" exact component={LandingPage} />
+        <Route path="/home" component={HomePage} />
       </div>
-    )
+    </Router>;
   }
 }
