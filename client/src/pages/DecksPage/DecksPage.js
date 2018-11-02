@@ -52,7 +52,7 @@ const styles = theme => ({
   },
 });
 
-export default class HomePage extends React.Component {
+export default class DecksPage extends React.Component {
   state = {
     mobileOpen: false,
     likedCards: [],
