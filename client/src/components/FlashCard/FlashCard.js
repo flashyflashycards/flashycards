@@ -21,12 +21,13 @@ const StyledIconButton = withStyles({
 
 export default class FlashCard extends PureComponent {
   render() {
-    const { _id, question, answer, date, liked, onLike, thumbsUp, thumbsDown } = this.props;
+    const { _id, question, answer, date, liked, onLike, thumbsUp, thumbsDown, name } = this.props;
     return <div className="flashCard">
       <Link to={"/cards/" + _id}>
       <div className="flashCard__upper">
         <div className="flashCard__title">
           {question}
+          {name}
         </div>
         <div className="flashCard__question">
           {answer}
