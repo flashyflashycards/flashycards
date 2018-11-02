@@ -18,7 +18,7 @@ export default class LandingPage extends Component {
 
   login = () => {
     // TODO: Validation
-    this.props.history.push('/home')
+    this.props.history.push('/decks')
   }
 
   render() {
