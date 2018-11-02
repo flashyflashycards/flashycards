@@ -55,12 +55,12 @@ const styles = theme => ({
 export default class DecksPage extends React.Component {
   state = {
     mobileOpen: false,
-    likedCards: [],
-    cards: []
+    likedDecks: [],
+    decks: []
   };
 
   componentDidMount() {
-    this.loadCards();
+    this.loadDecks();
 
   }
   handleDrawerToggle = () => {
@@ -68,38 +68,38 @@ export default class DecksPage extends React.Component {
   };
 
   likeCard(i) {
-    const { likedCards } = this.state;
-    if (likedCards.includes(i)) {
-      this.setState({ likedCards: likedCards.filter(c => c !== i) });
+    const { likedDecks } = this.state;
+    if (likedDecks.includes(i)) {
+      this.setState({ likedDecks: likedDecks.filter(c => c !== i) });
     } else {
-      this.setState({ likedCards: likedCards.concat(i) });
+      this.setState({ likedDecks: likedDecks.concat(i) });
     }
     // API.addLikes(i)
-    API.addLikes(this.state.cards[i]._id, {thumbsUp: this.state.cards[i].thumbsUp+1});
-    this.loadCards();
+    API.addLikes(this.state.decks[i]._id, {thumbsUp: this.state.decks[i].thumbsUp+1});
+    this.loadDecks();
   }
   
   
-  loadCards = () => {
-    API.getCards()
+  loadDecks = () => {
+    API.getDecks()
       .then(res =>
-        this.setState({ cards: res.data}), console.log("Cards added")
+        this.setState({ decks: res.data}), console.log("Decks added")
       )
       .catch(err => console.log(err));
   };
 
   render() {
-    const { likedCards, mobileOpen } = this.state;
+    const { likedDecks, mobileOpen } = this.state;
    
-    // const cards = [
+    // const Decks = [
     //   { title: 'Lorem ipsum dolor sit amet', question: 'Fusce venenatis varius lorem nec rutrum. Etiam condimentum dui eget tortor porttitor, eu egestas ligula dictum. Quisque a tellus eget dolor rutrum suscipit. Sed nisl massa, congue sit amet elit vel, fringilla interdum felis.', date: new Date().toLocaleDateString('en-CA') },
     //   { title: 'Lorem ipsum dolor sit amet', question: 'Fusce venenatis varius lorem nec rutrum. Etiam condimentum dui eget tortor porttitor, eu egestas ligula dictum. Quisque a tellus eget dolor rutrum suscipit. Sed nisl massa, congue sit amet elit vel, fringilla interdum felis.', date: new Date().toLocaleDateString('en-CA') },
     //   { title: 'Lorem ipsum dolor sit amet', question: 'Fusce venenatis varius lorem nec rutrum. Etiam condimentum dui eget tortor porttitor, eu egestas ligula dictum. Quisque a tellus eget dolor rutrum suscipit. Sed nisl massa, congue sit amet elit vel, fringilla interdum felis.', date: new Date().toLocaleDateString('en-CA') },
     // ];
     return <Navigation mobileOpen={mobileOpen} onDrawerToggle={this.handleDrawerToggle} container={this.props.container}>
       <div className="row">
-        {this.state.cards.map((c, i) => <div className="column medium-4 small-12">
-          <FlashCard key={i} {...c} liked={likedCards.includes(i)} onLike={() => this.likeCard(i)} />
+        {this.state.decks.map((c, i) => <div className="column medium-4 small-12">
+          <FlashCard key={i} {...c} liked={likedDecks.includes(i)} onLike={() => this.likeCard(i)} />
         </div>)}
       </div>
     </Navigation>
