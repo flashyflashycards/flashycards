@@ -66,6 +66,7 @@ export default class App extends Component {
         <Route path="/" exact component={LandingPage} />
         <Route path="/home" component={HomePage} />
         <Route path="/decks" component={DecksPage} />
+        <Route path="/deck/:id" render={(props) => <HomePage {...props} />} />
       </div>
     </Router>;
   }

@@ -16,12 +16,14 @@ export default class EditButton extends PureComponent {
   }
 
   onAddCard= () => {
-    API.saveCard({
+    // alert(this.props.deckID);
+    API.saveCard(this.props.deckID,{
       question: this.state.question,
       answer: this.state.answer,
       thumbsUp: '0',
       thumbsDown: '0'
     })
+      // .then(API.updateDeck("5bd3c93fc09bba9750664c1f", {cards: ["did it ddxzxwork?"]}))
       .then(res => alert('Added card'), window.location.reload())
       .catch(err => console.log(err))
   }
@@ -34,7 +36,7 @@ export default class EditButton extends PureComponent {
 
   render() {
     const { open, title, question, answer } = this.state;
-
+// alert(this.props.deckID);
     return <React.Fragment>
       <button type="button" className="app-navigation__edit" onClick={() => this.setState({ open: true })}>
         <svg xmlns="http://www.w3.org/2000/svg" width="6" height="24" viewBox="0 0 6 24">

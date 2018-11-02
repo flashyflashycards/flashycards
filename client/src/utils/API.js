@@ -14,8 +14,8 @@ export default {
     return axios.delete("/api/cards/" + id);
   },
   // Saves a book to the database
-  saveCard: function(cardData) {
-    return axios.post("/api/cards", cardData);
+  saveCard: function(id, cardData) {
+    return axios.post("/api/cards/" + id, cardData);
   },
   addLikes: function(id, cardData){
     return axios.put("/api/cards/" + id, cardData)
@@ -49,5 +49,8 @@ export default {
   // Saves a book to the database
   saveDeck: function(deckData) {
     return axios.post("/api/decks", deckData);
-  } 
+  },
+  updateDeck: function(id, cardData){
+    return axios.put("/api/decks/" + id, cardData);
+  }
 };

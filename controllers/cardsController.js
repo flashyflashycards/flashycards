@@ -18,7 +18,7 @@ module.exports = {
   create: function(req, res) {
     db.Card
       .create(req.body)
-      .then(dbModel => res.json(dbModel))
+      .then(function(dbModel) {return db.Deck.findOneAndUpdate({_id: req.params.id}, { $push: { cards: dbModel._id } }, { new: true });})
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
