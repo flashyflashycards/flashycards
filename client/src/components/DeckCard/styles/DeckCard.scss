@@ -1,0 +1,86 @@
+.deckCard {
+    background-color: #ffffff;
+    margin-bottom: 1.5rem;
+    
+    &__upper {
+        padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+    }
+    &__lower {
+        padding: 1rem;
+        border-top: 1px solid #e4e4e4;
+
+        svg {
+            display: block;
+        }
+    }
+
+    &__title {
+        font-family: 'Work Sans', sans-serif;
+        font-size: 25.4px;
+        font-weight: bold;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.26;
+        letter-spacing: normal;
+        color: #17262b;
+        margin-bottom: 1rem;
+    }
+    &__question {
+        font-family: 'Work Sans', sans-serif;
+        font-size: 16px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.42;
+        letter-spacing: 0.5px;
+        color: #334955;
+    }
+    &__date {
+        font-family: 'Work Sans', sans-serif;
+        font-size: 16px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.42;
+        letter-spacing: 0.5px;
+        color: #b3c1cc;
+    }
+    &__button {
+        width: 3rem;
+        height: 3rem;
+        text-align: center;
+        flex: 0 0 auto;
+        padding: 12px;
+        border-radius: 50%;
+        margin-left: 0.5rem;
+        background-color: #eef0f2;
+        outline: none;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+
+        &--active {
+            background-color: #f0ad3c;
+
+            svg path {
+                fill: #334955;
+            }
+        }
+
+        &:hover {
+            svg path {
+                fill: #334955;
+            }
+        }
+
+        svg {
+            width: 100%;
+            display: flex;
+            align-items: inherit;
+            justify-content: inherit;
+
+            path {
+                transition: all 0.2s ease;
+            }
+        }
+    }
+}
