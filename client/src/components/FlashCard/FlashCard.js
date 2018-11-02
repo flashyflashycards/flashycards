@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import LikeIcon from './components/LikeIcon';
 import ContextDots from './components/ContextDots';
 import IconButton from '@material-ui/core/IconButton';
+import { Link } from "react-router-dom";
+
 
 import './styles/FlashCard.scss';
 import { withStyles } from '@material-ui/core';
@@ -19,8 +21,9 @@ const StyledIconButton = withStyles({
 
 export default class FlashCard extends PureComponent {
   render() {
-    const { question, answer, date, liked, onLike, thumbsUp, thumbsDown } = this.props;
+    const { _id, question, answer, date, liked, onLike, thumbsUp, thumbsDown } = this.props;
     return <div className="flashCard">
+      <Link to={"/cards/" + _id}>
       <div className="flashCard__upper">
         <div className="flashCard__title">
           {question}
@@ -29,6 +32,7 @@ export default class FlashCard extends PureComponent {
           {answer}
         </div>
       </div>
+      </Link>
       <div className="flashCard__lower">
         <div className="row align-middle collapse">
           <div className="column">

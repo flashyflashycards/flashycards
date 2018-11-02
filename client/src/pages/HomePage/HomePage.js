@@ -16,7 +16,8 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import Navigation from '../../components/Navigation';
 import FlashCard from '../../components/FlashCard';
-import API from '../../utils/API.js'
+import API from '../../utils/API.js';
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -100,6 +101,7 @@ export default class HomePage extends React.Component {
       <div className="row">
         {this.state.cards.map((c, i) => <div className="column medium-4 small-12">
           <FlashCard key={i} {...c} liked={likedCards.includes(i)} onLike={() => this.likeCard(i)} />
+
         </div>)}
       </div>
     </Navigation>
