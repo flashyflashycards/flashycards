@@ -21,31 +21,31 @@ const StyledIconButton = withStyles({
 
 export default class DeckCard extends PureComponent {
   render() {
-    const { _id, question, answer, date, liked, onLike, thumbsUp, thumbsDown } = this.props;
-    return <div className="DeckCard">
-      <Link to={"/cards/" + _id}>
-      <div className="DeckCard__upper">
-        <div className="DeckCard__title">
-          {question}
+    const { _id, question, name, answer, date, liked, onLike, thumbsUp, thumbsDown } = this.props;
+    return <div className="deckCard">
+      <Link to={"/deck/" + _id}>
+      <div className="deckCard__upper">
+        <div className="deckCard__title">
+          {name}
         </div>
-        <div className="DeckCard__question">
+        <div className="deckCard__question">
           {answer}
         </div>
       </div>
       </Link>
-      <div className="DeckCard__lower">
+      <div className="deckCard__lower">
         <div className="row align-middle collapse">
           <div className="column">
-            <span className="DeckCard__date">{date}</span>
+            <span className="deckCard__date">{date}</span>
           </div>
           <div className="column shrink">
-            <button type="button" className={`DeckCard__button ${liked ? 'DeckCard__button--active' : ''}`} onClick={() => onLike()}>
+            <button type="button" className={`deckCard__button ${liked ? 'deckCard__button--active' : ''}`} onClick={() => onLike()}>
               <LikeIcon />
               {thumbsUp}
             </button >
           </div>
           <div className="column shrink">
-            <button type="button" className="DeckCard__button" >
+            <button type="button" className="deckCard__button" >
               <ContextDots />
             </button>
           </div>
