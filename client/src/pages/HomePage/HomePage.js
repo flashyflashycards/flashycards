@@ -57,7 +57,8 @@ export default class HomePage extends React.Component {
   state = {
     mobileOpen: false,
     likedCards: [],
-    cards: []
+    cards: [],
+    deckID: this.props.deckID
   };
 
   componentDidMount() {
@@ -82,9 +83,10 @@ export default class HomePage extends React.Component {
   
   
   loadCards = () => {
-    API.getCards()
+    API.getDeck(this.props.match.params.id)
       .then(res =>
-        this.setState({ cards: res.data}), console.log("Cards added")
+         this.setState({ cards: res.data.cards}),
+        // console.log(res.data)
       )
       .catch(err => console.log(err));
   };
@@ -97,7 +99,7 @@ export default class HomePage extends React.Component {
     //   { title: 'Lorem ipsum dolor sit amet', question: 'Fusce venenatis varius lorem nec rutrum. Etiam condimentum dui eget tortor porttitor, eu egestas ligula dictum. Quisque a tellus eget dolor rutrum suscipit. Sed nisl massa, congue sit amet elit vel, fringilla interdum felis.', date: new Date().toLocaleDateString('en-CA') },
     //   { title: 'Lorem ipsum dolor sit amet', question: 'Fusce venenatis varius lorem nec rutrum. Etiam condimentum dui eget tortor porttitor, eu egestas ligula dictum. Quisque a tellus eget dolor rutrum suscipit. Sed nisl massa, congue sit amet elit vel, fringilla interdum felis.', date: new Date().toLocaleDateString('en-CA') },
     // ];
-    return <Navigation mobileOpen={mobileOpen} onDrawerToggle={this.handleDrawerToggle} container={this.props.container}>
+    return <Navigation mobileOpen={mobileOpen} onDrawerToggle={this.handleDrawerToggle} container={this.props.container} deckID={this.props.match.params.id}>
       <div className="row">
         {this.state.cards.map((c, i) => <div className="column medium-4 small-12">
           <FlashCard key={i} {...c} liked={likedCards.includes(i)} onLike={() => this.likeCard(i)} />

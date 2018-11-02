@@ -8,7 +8,7 @@ const deckSchema = new Schema({
       // Store ObjectIds in the array
       type: Schema.Types.ObjectId,
       // The ObjectIds will refer to the ids in the Card model
-      ref: "Deck"
+      ref: "Card"
     }
   ]
 });

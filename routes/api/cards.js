@@ -11,6 +11,7 @@ router
   .route("/:id")
   .get(cardsController.findById)
   .put(cardsController.update)
+  .post(cardsController.create)
   .delete(cardsController.remove);
 
 module.exports = router;
