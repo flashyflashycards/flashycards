@@ -15,6 +15,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import Navigation from '../../components/Navigation';
+import DeckCard from '../../components/DeckCard';
 import FlashCard from '../../components/FlashCard';
 import API from '../../utils/API.js'
 
@@ -99,7 +100,7 @@ export default class DecksPage extends React.Component {
     return <Navigation mobileOpen={mobileOpen} onDrawerToggle={this.handleDrawerToggle} container={this.props.container}>
       <div className="row">
         {this.state.decks.map((c, i) => <div className="column medium-4 small-12">
-          <FlashCard key={i} {...c} liked={likedDecks.includes(i)} onLike={() => this.likeCard(i)} />
+          <DeckCard key={i} {...c} liked={likedDecks.includes(i)} onLike={() => this.likeDeck(i)} />
         </div>)}
       </div>
     </Navigation>
