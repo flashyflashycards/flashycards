@@ -7,6 +7,7 @@ import API from '../utils/API.js'
 import './styles/foundation.min.css'
 import './styles/App.css'
 import HomePage from '../pages/HomePage'
+import DecksPage from '../pages/DecksPage'
 import LandingPage from '../pages/LandingPage';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -64,6 +65,7 @@ export default class App extends Component {
       <div className="app">
         <Route path="/" exact component={LandingPage} />
         <Route path="/home" component={HomePage} />
+        <Route path="/decks" component={DecksPage} />
       </div>
     </Router>;
   }
