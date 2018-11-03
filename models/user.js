@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt');
+
 // const validators = require("validators");
 
 const userSchema = new Schema({
@@ -27,6 +29,29 @@ const userSchema = new Schema({
     }
   ]
 });
+
+
+
+module.exports = new PassportLocalStrategy({
+  usernameField: 'email',
+  passwordField: 'password',
+  session: false,
+  passReqToCallback: true
+}, (req, email, password, done) => {
+  const userData = {
+    email: email.trim(),
+    password: password.trim(),
+    name: req.body.name.trim()
+  };
+
+  const newUser = new User(userData);
+  newUser.save((err) => {
+    if (err) { return done(err); }
+
+    return done(null);
+  });
+});
+
 
 const User = mongoose.model("User", userSchema);
 

@@ -9,6 +9,7 @@ import './styles/App.css'
 import HomePage from '../pages/HomePage'
 import DecksPage from '../pages/DecksPage'
 import LandingPage from '../pages/LandingPage';
+import SignUpForm from '../pages/SignUpPage'; 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 export default class App extends Component {
@@ -64,6 +65,7 @@ export default class App extends Component {
     return <Router>
       <div className="app">
         <Route path="/" exact component={LandingPage} />
+        <Rout path="/signup" component={SignUpPage} />
         <Route path="/home" component={HomePage} />
         <Route path="/decks" component={DecksPage} />
         <Route path="/deck/:id" render={(props) => <HomePage {...props} />} />
