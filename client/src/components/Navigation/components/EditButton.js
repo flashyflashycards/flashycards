@@ -12,7 +12,8 @@ export default class EditButton extends PureComponent {
   state = {
     open: false,
     question: '',
-    answer: ''
+    answer: '',
+    deckID: ""
   }
 
   onAddCard= () => {
@@ -28,21 +29,37 @@ export default class EditButton extends PureComponent {
       .catch(err => console.log(err))
   }
 
+  onAddDeck= () => {
+    // alert(this.props.deckID);
+    API.saveDeck({
+      name: this.state.question
+    })
+      // .then(API.updateDeck("5bd3c93fc09bba9750664c1f", {cards: ["did it ddxzxwork?"]}))
+      .then(res => alert('Added deck'), window.location.reload())
+      .catch(err => console.log(err))
+  }
+
   submit = () => {
     const { question, answer } = this.state;
-    this.onAddCard({ question, answer });
+    if (this.props.deckID === undefined) {
+      this.onAddDeck({ question });
+    } else {
+      this.onAddCard({ question, answer });
+    };
+    
     // this.props.onAddCard({ question, answer });
   }
 
-  render() {
-    const { open, title, question, answer } = this.state;
-// alert(this.props.deckID);
+  renderAddCard = () => {
+    const { open, title, question, answer, deckID } = this.state;
     return <React.Fragment>
       <button type="button" className="app-navigation__edit" onClick={() => this.setState({ open: true })}>
         <svg xmlns="http://www.w3.org/2000/svg" width="6" height="24" viewBox="0 0 6 24">
           <path fill="#17262B" d="M.35 21.077L3 23.728l2.652-2.651V5.436H.35v15.64zM5.653 1.334a.996.996 0 0 0-.997-.997h-3.31a.996.996 0 0 0-.996.997v2.588h5.303V1.334z" />
         </svg>
       </button>
+
+      
       <Dialog open={open} onClose={() => this.setState({ open: false })}>
         <DialogTitle id="add-card">Add new card</DialogTitle>
         <DialogContent>
@@ -71,7 +88,61 @@ export default class EditButton extends PureComponent {
             </Button>
         </DialogActions>
       </Dialog>
+      
     </React.Fragment>;
+  };
+
+  renderAddDeck = () => {
+    const { open, title, question, answer, deckID } = this.state;
+    return <React.Fragment>
+      <button type="button" className="app-navigation__edit" onClick={() => this.setState({ open: true })}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="6" height="24" viewBox="0 0 6 24">
+          <path fill="#17262B" d="M.35 21.077L3 23.728l2.652-2.651V5.436H.35v15.64zM5.653 1.334a.996.996 0 0 0-.997-.997h-3.31a.996.996 0 0 0-.996.997v2.588h5.303V1.334z" />
+        </svg>
+      </button>
+
+      
+      <Dialog open={open} onClose={() => this.setState({ open: false })}>
+        <DialogTitle id="add-card">Add new deck</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="Deck Name"
+            label="Deck Name"
+            type="text"
+            value={question}
+            onChange={e => this.setState({ question: e.target.value })}
+            fullWidth
+          />
+          {/* <TextField
+            id="answer"
+            label="answer"
+            type="text"
+            value={answer}
+            onChange={e => this.setState({ answer: e.target.value })}
+            fullWidth
+          /> */}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={this.submit} color="primary">
+            Add deck
+            </Button>
+        </DialogActions>
+      </Dialog>
+      
+    </React.Fragment>;
+  };
+
+  render() {
+    const { open, title, question, answer, deckID } = this.state;
+
+    if (this.props.deckID === undefined) {
+      return this.renderAddDeck();
+    } else {
+      return this.renderAddCard();
+    }
+    
   }
 }
 
