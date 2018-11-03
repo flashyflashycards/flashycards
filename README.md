@@ -22,11 +22,11 @@ The flashcard format is more manageable for users providing feedback
 </p>
 
 #Website access
-(link here)
+<a href="https://secure-bayou-78292.herokuapp.com/"><strong>Click here to explore GraDecks!</strong></a>
 
 ## Authors
 * **Asha Mohamed** (https://github.com/asham28)
 * **Ka Kun Wong** (https://github.com/Zashii)
-* **Bryan Carvalho** (https://github.com/)
+* **Bryan Carvalho** (https://github.com/bryancarvalho)
 * **Eunji Lee** (https://github.com/eunji120)
 * **Amyn Merchant** (https://github.com/amynmerchant)
