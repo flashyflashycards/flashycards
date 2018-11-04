@@ -54,17 +54,13 @@ const styles = theme => ({
 });
 
 export default class HomePage extends React.Component {
-  
   state = {
     mobileOpen: false,
     likedCards: [],
-    cards: [],
+    cards: ["4"],
     cardsID: [],
-    deckID: this.props.deckID, 
-    test: ""
+    deckID: this.props.deckID
   };
-
-  // this.loadCardsInfo = this.loadCardsInfo.bind(this);
 
   componentDidMount() {
     this.loadCards();
@@ -100,7 +96,7 @@ export default class HomePage extends React.Component {
         console.log("Cards before: ");
         console.log(this.state.cards);
          this.setState({ cardsID: res.data.cards}) 
-         this.loadCardsInfo(this.state.cardsID)}
+         this.loadCardsInfo(res.data.cards)}
         //  console.log(res.data),
       )//).then(res => 
 
@@ -114,38 +110,38 @@ export default class HomePage extends React.Component {
       .catch(err => console.log(err));
   };
 
-  updateCards (currentCards) {
-    // this.setState({cards: currentCards});
-    // this.forceUpdate();
+  updateCards = (current) => {
+    console.log("I run this now");
+    this.setState({cards: current});
+    this.forceUpdate();
   };
 
   loadCardsInfo = (cardIds) => {
     
     var currentCards = ["1", "1", "3"];
     
-    API.getCard(this.props.match.params.id)
-      .then(res => {
-        console.log("Card #1: ");
-        console.log(res);
-        // console.log(this.state.cards);
-        // this.setState({ test:"Yo"}) 
-        // console.log(this.state.test);
-         this.setState({cards: res.data});
-        
-      })
-
-  //   cardIds.map(function(c, i) { 
-      
-  //      API.getCard(c).then( res => {
-  //        console.log(res);
-        
-  //     });
-  //  })
-
-  //  return this.updateCards(currentCards);
+    cardIds.map(function(c, i) { 
+      // API.getCard(c).then(function (oneCard){currentCards.push(oneCard);      console.log(currentCards[i]);   this.setState({cards: currentCards})})
+      // API.getCard(c).then(function (oneCard){currentCards.push(oneCard);})
+      API.getCard(c).then(function (oneCard){
+        currentCards.push(oneCard);
+      //  alert(console.log("Ds"));
+        // console.log(currentCards);
+        alert(currentCards);
+      }).then(function (vx){this.updateCards(currentCards)});
+    //  this.setState({cards: currentCards});
+    // }.then(function (c){
+    //   // this.setState({ cards: res.data}),
+    //   var currentCards = [window.state.cards];
+    //   currentCards.push(c);
+    //   console.log("What");
+    //   this.setState({cards:currentCards});
+    //  // console.log(res.data)
+   })
+   console.log("Im done mapping");
 
   //  alert(typeof currentCards);
-  //  this.updateCards(currentCards);
+   await(this.updateCards(currentCards);
   //  this.setState({cards: ["1","3"]});
   //  console.log("Current Cards");
   //  console.log(currentCards);
@@ -182,7 +178,7 @@ export default class HomePage extends React.Component {
     console.log(this.state.cards);
     // this.setState({cards: ["1", "3"]});
     
-    return <Navigation mobileOpen={mobileOpen} onDrawerToggle={this.handleDrawerToggle} container={this.props.container} deckID={this.props.match.params.id} userID={this.props.match.params.id2}>
+    return <Navigation mobileOpen={mobileOpen} onDrawerToggle={this.handleDrawerToggle} container={this.props.container} deckID={this.props.match.params.id}>
       <div className="row">
         {this.state.cards.map((c, i) => <div className="column medium-4 small-12"><FlashCard key={i} {...c} liked={likedCards.includes(i)} onLike={() => this.likeCard(i)} /></div>)}
       </div>

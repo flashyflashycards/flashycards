@@ -10,7 +10,8 @@ const deckSchema = new Schema({
       // The ObjectIds will refer to the ids in the Card model
       ref: "Card"
     }
-  ]
+  ],
+  userID: {type: Schema.Types.ObjectId}
 });
 
 const Deck = mongoose.model("Deck", deckSchema);

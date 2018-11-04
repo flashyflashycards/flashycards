@@ -6,7 +6,8 @@ const cardSchema = new Schema({
   answer: { type: String, required: true },
   thumbsUp: { type: Number}, 
   thumbsDown: { type: Number}, 
-  comments: { type: Array}
+  comments: { type: Array},
+  deckID: {type: Schema.Types.ObjectId}
 });
 
 const Card = mongoose.model("Card", cardSchema);

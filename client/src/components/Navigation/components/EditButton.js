@@ -13,7 +13,8 @@ export default class EditButton extends PureComponent {
     open: false,
     question: '',
     answer: '',
-    deckID: ""
+    deckID: "",
+    userID: ""
   }
 
   onAddCard= () => {
@@ -22,7 +23,8 @@ export default class EditButton extends PureComponent {
       question: this.state.question,
       answer: this.state.answer,
       thumbsUp: '0',
-      thumbsDown: '0'
+      thumbsDown: '0',
+      deckID: this.props.deckID
     })
       // .then(API.updateDeck("5bd3c93fc09bba9750664c1f", {cards: ["did it ddxzxwork?"]}))
       .then(res => alert('Added card'), window.location.reload())
@@ -32,7 +34,8 @@ export default class EditButton extends PureComponent {
   onAddDeck= () => {
     // alert(this.props.deckID);
     API.saveDeck({
-      name: this.state.question
+      name: this.state.question,
+      userID: "5bde5ca4e6bb665ed8b877c1"
     })
       // .then(API.updateDeck("5bd3c93fc09bba9750664c1f", {cards: ["did it ddxzxwork?"]}))
       .then(res => alert('Added deck'), window.location.reload())

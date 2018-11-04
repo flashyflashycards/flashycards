@@ -11,6 +11,7 @@ router
   .route("/:id")
   .get(decksController.findById)
   .put(decksController.update)
+  // .post(decksController.create)
   .delete(decksController.remove);
 
 module.exports = router;
