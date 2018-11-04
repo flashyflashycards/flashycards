@@ -20,12 +20,12 @@ const styles = {
 
 class Navigation extends Component {
   render() {
-    const { classes, container, mobileOpen, onDrawerToggle, children, deckID } = this.props;
+    const { classes, container, mobileOpen, onDrawerToggle, children, deckID, userID } = this.props;
     // alert(this.props.deckID);
     const contents = <div className="app-navigation__drawer">
       <Toolbar />
       <Logo />
-      <EditButton deckID = {this.props.deckID}/>
+      <EditButton deckID = {this.props.deckID} userID = {this.props.userID}/>
     </div>;
 
     return <React.Fragment>
