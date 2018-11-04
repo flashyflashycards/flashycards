@@ -99,8 +99,8 @@ export default class HomePage extends React.Component {
       .then(res => {
         console.log("Cards before: ");
         console.log(this.state.cards);
-         this.setState({ cardsID: res.data.cards}) 
-         this.loadCardsInfo(this.state.cardsID)}
+        //  this.setState({ cardsID: res.data.cards}) 
+         this.loadCardsInfo()}
         //  console.log(res.data),
       )//).then(res => 
 
@@ -119,9 +119,9 @@ export default class HomePage extends React.Component {
     // this.forceUpdate();
   };
 
-  loadCardsInfo = (cardIds) => {
+  loadCardsInfo = () => {
     
-    var currentCards = ["1", "1", "3"];
+    var currentCards = ["1", "1", "1"];
     
     API.getCard(this.props.match.params.id)
       .then(res => {
