@@ -5,6 +5,7 @@ const routes = require("./routes");
 const app = express();
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3001;
+const _ = require('underscore');
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -28,13 +29,13 @@ mongoose.connect(
 // parse HTTP body messages
 app.use(bodyParser.urlencoded({ extended: false }));
 // pass the passport middleware
-app.use(passport.initialize());
+// app.use(passport.initialize());
 
 // load passport strategies
-const localSignupStrategy = require('./server/passport/local-signup');
-const localLoginStrategy = require('./server/passport/local-login');
-passport.use('local-signup', localSignupStrategy);
-passport.use('local-login', localLoginStrategy);
+// const localSignupStrategy = require('./server/passport/local-signup');
+// const localLoginStrategy = require('./server/passport/local-login');
+// passport.use('local-signup', localSignupStrategy);
+// passport.use('local-login', localLoginStrategy);
 
 
 

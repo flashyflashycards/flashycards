@@ -2,3 +2,10 @@
   float: right;
   color: #e74944;
 }
+
+.save-btn {
+  font-size: 20px;
+  border: 2px solid black;
+  left: 25%;
+  margin-left: 35%;
+}
