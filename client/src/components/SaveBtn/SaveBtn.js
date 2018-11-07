@@ -5,7 +5,7 @@ import "./SaveBtn.css";
 // That way we don't have to define them all individually
 const SaveBtn = props => (
   <div className="save-btn" {...props}>
-    {props.word} ✓
+    {props.word} Start the Simulation
   </div>
 );
 

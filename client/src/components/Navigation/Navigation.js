@@ -5,6 +5,7 @@ import Drawer from '@material-ui/core/Drawer';
 import { withStyles } from '@material-ui/core';
 import Toolbar from '@material-ui/core/Toolbar';
 import EditButton from './components/EditButton';
+import StartButton from './components/StartButton';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Logo from '../Logo';
 
@@ -26,6 +27,9 @@ class Navigation extends Component {
       <Toolbar />
       <Logo />
       <EditButton deckID = {this.props.deckID} userID = {this.props.userID}/>
+      <StartButton deckID = {this.props.deckID}/>
+      
+      
     </div>;
 
     return <React.Fragment>
