@@ -20,7 +20,6 @@ import API from '../../utils/API.js';
 import { Link } from "react-router-dom";
 import SaveBtn from "../../components/SaveBtn";
 
-let _ = require('underscore');
 
 
 const drawerWidth = 240;
