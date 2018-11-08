@@ -71,7 +71,12 @@ export default class HomePage extends React.Component {
   // this.loadCardsInfo = this.loadCardsInfo.bind(this);
 
   componentDidMount() {
-    this.loadCards();
+    alert(this.props.match.params.id);
+      API.getCard(this.props.match.params.id).then(res => {
+      console.log (res.data);
+      this.setState({cards: res.data});
+    });
+      //  this.setState({ cardsID: res.data.cards}) 
     // console.log(this.state.cardsID);
     
 
@@ -199,10 +204,10 @@ export default class HomePage extends React.Component {
     console.log(this.state.cards);
     // this.setState({cards: ["1", "3"]});
     
-    return <Navigation mobileOpen={mobileOpen} onDrawerToggle={this.handleDrawerToggle} container={this.props.container} deckID={this.props.match.params.id} userID={this.props.match.params.id2}>
+    return <Navigation mobileOpen={mobileOpen} onDrawerToggle={this.handleDrawerToggle} container={this.props.container} deckID={this.props.match.params.cid} userID={this.props.match.params.id2}>
       <div className="row">
-        <SaveBtn onClick={() => this.shuffleCards()} />
-        {this.state.cards.map((c, i) => <div className="column medium-12 small-12"><FlashCard deckID={this.props.match.params.id} key={i} {...c} liked={likedCards.includes(i)} onLike={() => this.likeCard(i)}  addComment={() => this.addComment(i)} /></div>)}
+        {/* <SaveBtn onClick={() => this.shuffleCards()} /> */}
+        {/* {this.state.cards.map((c, i) => <div className="column medium-12 small-12"><FlashCard deckID={this.props.match.params.id} key={i} {...c} liked={likedCards.includes(i)} onLike={() => this.likeCard(i)}  addComment={() => this.addComment(i)} /></div>)} */}
       </div>
     </Navigation>
   }
