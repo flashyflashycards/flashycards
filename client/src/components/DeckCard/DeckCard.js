@@ -21,7 +21,7 @@ const StyledIconButton = withStyles({
 
 export default class DeckCard extends PureComponent {
   render() {
-    const { _id, question, name, answer, date, liked, onLike, thumbsUp, thumbsDown } = this.props;
+    const { _id, question, name, answer, date, liked, onLike, thumbsUp, thumbsDown, addComment } = this.props;
     return <div className="deckCard">
       <Link to={"/deck/" + _id}>
       <div className="deckCard__upper">
@@ -45,7 +45,7 @@ export default class DeckCard extends PureComponent {
             </button >
           </div>
           <div className="column shrink">
-            <button type="button" className="deckCard__button" >
+            <button type="button" className="deckCard__button" onClick={() => addComment()} >
               <ContextDots />
             </button>
           </div>
