@@ -2,7 +2,6 @@
   "name": "mern",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001/",
   "engines": "8.11.3",
   "dependencies": {
     "react-router-dom": "^4.1.2",
