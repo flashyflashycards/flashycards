@@ -1,7 +1,6 @@
 {
   "name": "mern",
   "version": "1.0.0",
-  "proxy": "http://localhost:3001",
   "description": "Flash cards share tool for educators",
   "engines": {
     "node": "8.11.3",
