@@ -1,6 +1,9 @@
 .deckCard {
     background-color: #ffffff;
     margin-bottom: 1.5rem;
+    min-height: 2rem; 
+    min-width: 20rem; 
+    margin-right: 10rem; 
     
     &__upper {
         padding: 1.5rem 1.5rem 2.5rem 1.5rem;
