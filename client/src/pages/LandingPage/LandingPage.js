@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
 import './styles/LandingPage.scss';
+import Logo from '../../components/Logo';
 
 export default class LandingPage extends Component {
   state = {
@@ -19,6 +20,13 @@ export default class LandingPage extends Component {
   login = () => {
     // TODO: Validation
     this.props.history.push('/decks')
+  }
+
+  scrollToFeatures() {
+    document.getElementById('features').scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
   }
 
   render() {
@@ -53,27 +61,101 @@ export default class LandingPage extends Component {
             </Button>
         </DialogActions>
       </Dialog>
-      <Header color="transparent" brand="Flashcards" fixed changeColorOnScroll={{ height: 400, color: 'white' }} rightLinks={<button type="button" className="landingPage__login" onClick={() => this.setState({ loginOpen: true })}>Login</button>} />
-      <Parallax filter image="https://preview.redd.it/mfq40zt18xu11.jpg?width=960&crop=smart&auto=webp&s=d9762c5a8187828b5ff25fc4bc6c0a18c4911acd">
+      <Header color="transparent" brand={<Logo />} fixed changeColorOnScroll={{ height: 400, color: 'white' }} rightLinks={<button type="button" className="landingPage__login" onClick={() => this.setState({ loginOpen: true })}>Login</button>} />
+      <Parallax filter image={require('./assets/hero.jpg')}>
         <div className="landingPage__header">
           <div className="row">
-            <div className="column">
-              <h1 className="white landingPage__title">Flashcards</h1>
-              <h2 className="landingPage__subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+            <div className="column landingPage__header__left">
+              <h1 className="white landingPage__title">Flashy Cards</h1>
+              <h2 className="landingPage__subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed nulla bibendum nisl hendrerit malesuada. Fusce tempor risus maximus pulvinar sagittis.</h2>
+              <button onClick={() => this.scrollToFeatures()} className="landingPage__learnMore" type="button">Learn More</button>
+            </div>
+            <div className="column shrink">
+              <img src={require('./assets/header.svg')} alt="" />
             </div>
           </div>
         </div>
       </Parallax>
-      <div className="landingPage__main">
-        <div className="row column">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam blandit, arcu eget malesuada pharetra, turpis odio pharetra diam, at malesuada purus leo vel arcu. Aliquam semper justo vel molestie interdum. Integer eget erat vitae lectus commodo tempor eget et nisl. Nunc luctus aliquam purus, vitae volutpat dolor porttitor at. Sed tempus, libero vitae vehicula blandit, turpis massa scelerisque tellus, in ullamcorper lacus massa sed lacus. Etiam convallis rhoncus turpis a pulvinar. Sed eu rutrum nunc, eu dignissim nibh. Nulla a orci ut lectus venenatis sodales. Fusce bibendum vulputate mauris, a ultrices dui finibus et. Nam id est sapien. Pellentesque et ligula vitae ipsum dictum pellentesque. Nunc eget mi ut erat pulvinar ornare ac ultricies ipsum. Nam condimentum arcu mi, a vehicula ex tempus maximus.
-          </p>
-          <p>
-            Sed sit amet est pellentesque, consequat felis ut, eleifend ex. Mauris euismod tempus varius. Morbi in nibh odio. Etiam orci ante, efficitur id risus ut, hendrerit cursus risus. Morbi in urna id nulla dignissim accumsan a in arcu. Curabitur nec consequat libero. Phasellus non lacus lectus. In turpis mauris, congue non lacus at, finibus congue felis. Maecenas dictum ex non mattis mattis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-          </p>
+      <div className="landingPage__main" id="features">
+        <div className="row align-center">
+          <div className="column medium-6 small-12">
+            <h1>Amazing Features</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed nulla bibendum nisl hendrerit malesuada fusce tempor sit amet del malute.
+            </p>
+          </div>
+        </div>
+        <div className="row">
+          <div className="medium-4 small-12">
+            <div className="landingPage__feature">
+              <img src={require('./assets/feature_1.svg')} alt="" />
+              <h2>Feature or Idea</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed nulla bibendum nisl hendrerit malesuada fusce tempor.</p>
+            </div>
+          </div>
+          <div className="medium-4 small-12">
+            <div className="landingPage__feature">
+              <img src={require('./assets/feature_2.svg')} alt="" />
+              <h2>Feature or Idea</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed nulla bibendum nisl hendrerit malesuada fusce tempor.</p>
+            </div>
+          </div>
+          <div className="medium-4 small-12">
+            <div className="landingPage__feature">
+              <img src={require('./assets/feature_3.svg')} alt="" />
+              <h2>Feature or Idea</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed nulla bibendum nisl hendrerit malesuada fusce tempor.</p>
+            </div>
+          </div>
         </div>
 
+        <div className="landingPage__team">
+          <div className="row">
+            <div className="column text-center">
+              <h1>Meat the Team</h1>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed nulla bibendum nisl hendrerit malesuada fusce tempor sit amet del malute.
+          </p>
+            </div>
+          </div>
+          <div className="row align-center">
+            <div className="medium-4 small-12">
+              <div className="landingPage__profile">
+                <img src={require('./assets/profile_1.jpg')} alt="" />
+                <h2>Asha</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed nulla bibendum nisl hendrerit malesuada fusce tempor.</p>
+              </div>
+            </div>
+            <div className="medium-4 small-12">
+              <div className="landingPage__profile">
+                <img src={require('./assets/profile_2.jpg')} alt="" />
+                <h2>Amyn</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed nulla bibendum nisl hendrerit malesuada fusce tempor.</p>
+              </div>
+            </div>
+            <div className="medium-4 small-12">
+              <div className="landingPage__profile">
+                <img src={require('./assets/profile_3.jpg')} alt="" />
+                <h2>Bryan</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed nulla bibendum nisl hendrerit malesuada fusce tempor.</p>
+              </div>
+            </div>
+            <div className="medium-4 small-12">
+              <div className="landingPage__profile">
+                <img src={require('./assets/profile_4.jpg')} alt="" />
+                <h2>Eunji</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed nulla bibendum nisl hendrerit malesuada fusce tempor.</p>
+              </div>
+            </div>
+            <div className="medium-4 small-12">
+              <div className="landingPage__profile">
+                <img src={require('./assets/profile_5.jpg')} alt="" />
+                <h2>Ka Lun</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed nulla bibendum nisl hendrerit malesuada fusce tempor.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </React.Fragment>
   }

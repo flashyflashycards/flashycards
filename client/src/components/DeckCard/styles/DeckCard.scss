@@ -1,16 +1,25 @@
 .deckCard {
-    background-color: #ffffff;
+    background-color: #334955;
     margin-bottom: 1.5rem;
-    min-height: 2rem; 
-    min-width: 20rem; 
-    margin-right: 10rem; 
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.14);
+    transition: box-shadow 0.2s ease;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+
+    &:hover {
+        box-shadow: 5px 5px 5px -3px rgba(0, 0, 0, 0.2), 3px 3px 14px 2px rgba(0, 0, 0, 0.12), 8px 8px 10px 1px rgba(0, 0, 0, 0.14);
+    }
+    
     
     &__upper {
-        padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+        padding: 2.5rem 1.5rem;
+        flex-grow: 1;
     }
     &__lower {
         padding: 1rem;
-        border-top: 1px solid #e4e4e4;
+        background-color: #ffffff;
 
         svg {
             display: block;
@@ -25,8 +34,9 @@
         font-stretch: normal;
         line-height: 1.26;
         letter-spacing: normal;
-        color: #17262b;
+        color: #ffffff;
         margin-bottom: 1rem;
+        
     }
     &__question {
         font-family: 'Work Sans', sans-serif;

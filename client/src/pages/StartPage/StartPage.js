@@ -21,8 +21,6 @@ import { Link } from "react-router-dom";
 import SaveBtn from "../../components/SaveBtn";
 
 
-let _ = require('underscore');
-
 
 const drawerWidth = 240;
 
@@ -72,7 +70,7 @@ export default class HomePage extends React.Component {
   // this.loadCardsInfo = this.loadCardsInfo.bind(this);
 
   componentDidMount() {
-    // this.loadCards();
+    this.loadCards();
     // console.log(this.state.cardsID);
     
 
@@ -174,11 +172,10 @@ export default class HomePage extends React.Component {
 
 
 
-
   render() {
     console.log("render");
     const { likedCards, mobileOpen } = this.state;
-    // <button onclick={()}>Shuffle </button>
+    // <button onclick={this.setState({ cards: _.shuffle(this.state.cards) })}>Shuffle </button>
     // const cards = [
     //   { title: 'Lorem ipsum dolor sit amet', question: 'Fusce venenatis varius lorem nec rutrum. Etiam condimentum dui eget tortor porttitor, eu egestas ligula dictum. Quisque a tellus eget dolor rutrum suscipit. Sed nisl massa, congue sit amet elit vel, fringilla interdum felis.', date: new Date().toLocaleDateString('en-CA') },
     //   { title: 'Lorem ipsum dolor sit amet', question: 'Fusce venenatis varius lorem nec rutrum. Etiam condimentum dui eget tortor porttitor, eu egestas ligula dictum. Quisque a tellus eget dolor rutrum suscipit. Sed nisl massa, congue sit amet elit vel, fringilla interdum felis.', date: new Date().toLocaleDateString('en-CA') },
@@ -190,16 +187,9 @@ export default class HomePage extends React.Component {
     
     return <Navigation mobileOpen={mobileOpen} onDrawerToggle={this.handleDrawerToggle} container={this.props.container} deckID={this.props.match.params.id} userID={this.props.match.params.id2}>
       <div className="row">
-
-      
         {/* <SaveBtn /> */}
         {/* {this.state.cards.map((c, i) => <div className="column medium-12 small-12"><FlashCard key={i} {...c} liked={likedCards.includes(i)} onLike={() => this.likeCard(i)} /></div>)} */}
       </div>
     </Navigation>
-    
-    
   }
-
-  
 }
-

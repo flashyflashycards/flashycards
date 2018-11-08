@@ -102,10 +102,9 @@ export default class EditButton extends PureComponent {
 
  
       <button type="button" className="app-navigation__start" onClick={() => alert("Starting deck slideshow!")}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="6" height="2422" viewBox="0 0 6 24">
-        <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />        
+        <svg xmlns="http://www.w3.org/2000/svg" width="6" height="24" viewBox="0 0 6 24">
+          <path fill="#17262B" d="M.35 21.077L3 23.728l2.652-2.651V5.436H.35v15.64zM5.653 1.334a.996.996 0 0 0-.997-.997h-3.31a.996.996 0 0 0-.996.997v2.588h5.303V1.334z" />
         </svg>
-
       </button>
       </Link>
 
@@ -118,7 +117,7 @@ export default class EditButton extends PureComponent {
     const { open, title, question, answer, deckID } = this.state;
 
     if (this.props.deckID === undefined) {
-      return null;
+      return this.renderAddCard();
     } else {
       return this.renderAddDeck();
     }
