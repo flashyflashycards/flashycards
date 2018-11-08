@@ -1,4 +1,5 @@
 const express = require("express");
+const authRoutes = require('./routes/auth-routes'); 
 
 const mongoose = require("mongoose");
 const routes = require("./routes");
@@ -16,6 +17,7 @@ if (process.env.NODE_ENV === "production") {
 }
 // Add routes, both API and view
 app.use(routes);
+app.use("/auth", authRoutes); 
 
 // Connect to the Mongo DB
 mongoose.connect(
@@ -26,6 +28,9 @@ mongoose.connect(
 
 // PASSPORT.JS
 // ========================
+
+
+
 // parse HTTP body messages
 app.use(bodyParser.urlencoded({ extended: false }));
 // pass the passport middleware

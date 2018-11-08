@@ -51,6 +51,7 @@ export default class LandingPage extends Component {
           <Button onClick={this.login} color="primary">
             Login
             </Button>
+
         </DialogActions>
       </Dialog>
       <Header color="transparent" brand="Flashcards" fixed changeColorOnScroll={{ height: 400, color: 'white' }} rightLinks={<button type="button" className="landingPage__login" onClick={() => this.setState({ loginOpen: true })}>Login</button>} />

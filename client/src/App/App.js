@@ -11,6 +11,7 @@ import DecksPage from '../pages/DecksPage'
 import StartPage from '../pages/StartPage'
 import LandingPage from '../pages/LandingPage';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import LoginPage from '../pages/LoginPage/LoginPage';
 
 export default class App extends Component {
   saveUser = i => {
@@ -65,6 +66,7 @@ export default class App extends Component {
     return <Router>
       <div className="app">
         <Route path="/" exact component={LandingPage} />
+        <Route path="/login" component={LoginPage} />
         <Route path="/home" component={HomePage} />
         <Route path="/decks" component={DecksPage} />
         <Route path="/deck/:id" render={(props) => <HomePage {...props} />} />
