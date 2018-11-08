@@ -39,15 +39,15 @@ export default class DeckCard extends PureComponent {
             <span className="deckCard__date">{date}</span>
           </div>
           <div className="column shrink">
-            <button type="button" className={`deckCard__button ${liked ? 'deckCard__button--active' : ''}`} onClick={() => onLike()}>
+            {/* <button type="button" className={`deckCard__button ${liked ? 'deckCard__button--active' : ''}`} onClick={() => onLike()}>
               <LikeIcon />
               {thumbsUp}
-            </button >
+            </button > */}
           </div>
           <div className="column shrink">
-            <button type="button" className="deckCard__button" onClick={() => addComment()} >
+            {/* <button type="button" className="deckCard__button" onClick={() => addComment()} >
               <ContextDots />
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
