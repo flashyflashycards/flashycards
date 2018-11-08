@@ -72,7 +72,7 @@ export default class HomePage extends React.Component {
   // this.loadCardsInfo = this.loadCardsInfo.bind(this);
 
   componentDidMount() {
-    this.loadCards();
+    // this.loadCards();
     // console.log(this.state.cardsID);
     
 
@@ -174,6 +174,7 @@ export default class HomePage extends React.Component {
 
 
 
+
   render() {
     console.log("render");
     const { likedCards, mobileOpen } = this.state;
@@ -189,9 +190,16 @@ export default class HomePage extends React.Component {
     
     return <Navigation mobileOpen={mobileOpen} onDrawerToggle={this.handleDrawerToggle} container={this.props.container} deckID={this.props.match.params.id} userID={this.props.match.params.id2}>
       <div className="row">
+
+      
         {/* <SaveBtn /> */}
         {/* {this.state.cards.map((c, i) => <div className="column medium-12 small-12"><FlashCard key={i} {...c} liked={likedCards.includes(i)} onLike={() => this.likeCard(i)} /></div>)} */}
       </div>
     </Navigation>
+    
+    
   }
+
+  
 }
+

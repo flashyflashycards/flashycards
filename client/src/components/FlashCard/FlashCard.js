@@ -59,10 +59,12 @@ export default class FlashCard extends PureComponent {
   }
 
   render() {
-    const { _id, question, answer, date, liked, onLike, thumbsUp, thumbsDown, name, comments, addComment } = this.props;
-    const { open, title, deckID, comment } = this.state;
+    const { _id, question, deckID, answer, date, liked, onLike, thumbsUp, thumbsDown, name, comments, addComment } = this.props;
+    const { open, title, comment } = this.state;
+    // alert(deckID);
     return <div className="flashCard">
-      <Link to={"/cards/" + _id}>
+
+      <Link to={deckID + "/cards/" + _id}>
       <div className="flashCard__upper">
         <div className="flashCard__title">
           {question}
