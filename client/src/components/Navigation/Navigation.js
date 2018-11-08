@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Hidden from '@material-ui/core/Hidden';
+import Drawer from '@material-ui/core/Drawer';
+import { withStyles } from '@material-ui/core';
+import Toolbar from '@material-ui/core/Toolbar';
+import EditButton from './components/EditButton';
+import StartButton from './components/StartButton';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Logo from '../Logo';
 
 import './styles/Navigation.scss';
 
@@ -11,15 +19,47 @@ const styles = {
   }
 };
 
-export default class Navigation extends Component {
+class Navigation extends Component {
   render() {
-    const { controls, children, deckID, userID } = this.props;
+    const { classes, container, mobileOpen, onDrawerToggle, children, deckID, userID } = this.props;
+    // alert(this.props.deckID);
+    const contents = <div className="app-navigation__drawer">
+      <Toolbar />
+      <Logo />
+      <EditButton deckID = {this.props.deckID} userID = {this.props.userID}/>
+      <StartButton deckID = {this.props.deckID}/>
+      
+      
+    </div>;
 
     return <React.Fragment>
+      <CssBaseline />
       <nav className="app-navigation">
-        <div className="app-navigation__drawer">
-          {controls}
-        </div>
+        {/* The implementation can be swap with js to avoid SEO duplication of links. */}
+        <Hidden smUp implementation="css">
+          <Drawer
+            container={container}
+            variant="temporary"
+            anchor="left"
+            classes={{ paper: classes.paper }}
+            PaperProps={{ classes: { root: classes.root } }}
+            open={mobileOpen}
+            onClose={onDrawerToggle}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+          >
+            {contents}
+          </Drawer>
+        </Hidden>
+        <Hidden xsDown implementation="css">
+          <Drawer
+            variant="permanent"
+            open
+          >
+            {contents}
+          </Drawer>
+        </Hidden>
       </nav>
       <main className="app-navigation__main">
         <div className="row">
@@ -30,9 +70,11 @@ export default class Navigation extends Component {
   }
 }
 
+export default withStyles(styles)(Navigation);
+
 Navigation.propTypes = {
   mobileOpen: PropTypes.bool,
   onDrawerToggle: PropTypes.func,
   children: PropTypes.node,
-  controls: PropTypes.any
+  container: PropTypes.any
 }
