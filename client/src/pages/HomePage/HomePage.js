@@ -94,9 +94,19 @@ export default class HomePage extends React.Component {
     API.addLikes(this.state.cards[i]._id, {thumbsUp: this.state.cards[i].thumbsUp+1});
     this.loadCards();
   }
+
+  addComment(i, comment) { 
+    let commentsArray = this.state.cards[i].comments;
+    commentsArray.push(this.comment);
+    API.addLikes(this.state.cards[i]._id, {comments: commentsArray});
+    console.log(commentsArray);
+    this.loadCards();
+  }
   
   
   loadCards = () => {
+    console.log("loading");
+    console.log(this.props.match.params.id);
     API.getDeck(this.props.match.params.id)
       .then(res => {
         console.log("Cards before: ");
@@ -122,9 +132,9 @@ export default class HomePage extends React.Component {
   };
 
   loadCardsInfo = () => {
-    
+    console.log("loading 2");
     var currentCards = ["1", "1", "1"];
-    
+    console.log("hey" + this.props.match.params.id);
     API.getCard(this.props.match.params.id)
       .then(res => {
         console.log("Card #1: ");
@@ -187,7 +197,7 @@ export default class HomePage extends React.Component {
     return <Navigation mobileOpen={mobileOpen} onDrawerToggle={this.handleDrawerToggle} container={this.props.container} deckID={this.props.match.params.id} userID={this.props.match.params.id2}>
       <div className="row">
         {/* <SaveBtn /> */}
-        {this.state.cards.map((c, i) => <div className="column medium-12 small-12"><FlashCard key={i} {...c} liked={likedCards.includes(i)} onLike={() => this.likeCard(i)} /></div>)}
+        {this.state.cards.map((c, i) => <div className="column medium-12 small-12"><FlashCard key={i} {...c} liked={likedCards.includes(i)} onLike={() => this.likeCard(i)}  addComment={() => this.addComment(i)} /></div>)}
       </div>
     </Navigation>
   }
