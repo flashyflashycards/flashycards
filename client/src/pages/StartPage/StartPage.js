@@ -21,6 +21,8 @@ import { Link } from "react-router-dom";
 import SaveBtn from "../../components/SaveBtn";
 
 
+let _ = require('underscore');
+
 
 const drawerWidth = 240;
 
@@ -175,7 +177,7 @@ export default class HomePage extends React.Component {
   render() {
     console.log("render");
     const { likedCards, mobileOpen } = this.state;
-    // <button onclick={this.setState({ cards: _.shuffle(this.state.cards) })}>Shuffle </button>
+    // <button onclick={()}>Shuffle </button>
     // const cards = [
     //   { title: 'Lorem ipsum dolor sit amet', question: 'Fusce venenatis varius lorem nec rutrum. Etiam condimentum dui eget tortor porttitor, eu egestas ligula dictum. Quisque a tellus eget dolor rutrum suscipit. Sed nisl massa, congue sit amet elit vel, fringilla interdum felis.', date: new Date().toLocaleDateString('en-CA') },
     //   { title: 'Lorem ipsum dolor sit amet', question: 'Fusce venenatis varius lorem nec rutrum. Etiam condimentum dui eget tortor porttitor, eu egestas ligula dictum. Quisque a tellus eget dolor rutrum suscipit. Sed nisl massa, congue sit amet elit vel, fringilla interdum felis.', date: new Date().toLocaleDateString('en-CA') },
