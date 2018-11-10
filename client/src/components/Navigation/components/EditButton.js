@@ -8,7 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
 import API from '../../../utils/API.js'
 
-export default class AddButton extends PureComponent {
+export default class EditButton extends PureComponent {
   state = {
     open: false,
     question: '',
@@ -98,7 +98,7 @@ export default class AddButton extends PureComponent {
   renderAddDeck = () => {
     const { open, title, question, answer, deckID } = this.state;
     return <React.Fragment>
-      <button type="button" className="decksPage__edit" onClick={() => this.setState({ open: true })}>
+      <button type="button" className="app-navigation__edit" onClick={() => this.setState({ open: true })}>
         <svg xmlns="http://www.w3.org/2000/svg" width="6" height="24" viewBox="0 0 6 24">
           <path fill="#17262B" d="M.35 21.077L3 23.728l2.652-2.651V5.436H.35v15.64zM5.653 1.334a.996.996 0 0 0-.997-.997h-3.31a.996.996 0 0 0-.996.997v2.588h5.303V1.334z" />
         </svg>
@@ -149,6 +149,6 @@ export default class AddButton extends PureComponent {
   }
 }
 
-AddButton.propTypes = {
+EditButton.propTypes = {
   onAddCard: PropTypes.func
 }

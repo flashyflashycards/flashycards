@@ -1,11 +1,18 @@
 .flashCard {
     background-color: #ffffff;
     margin-bottom: 1.5rem;
-    text-decoration: none;
-    display: block;
+    min-height: 2rem; 
+    min-width: 20rem; 
+    margin-right: 10rem; 
     
     &__upper {
         padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+    }
+
+    &__middle {
+        
+        padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+        border-top: 1px solid #e4e4e4;
     }
     &__lower {
         padding: 1rem;
